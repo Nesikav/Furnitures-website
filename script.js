@@ -32,13 +32,13 @@ const products = [
   {
     name: "Dresser Table",
     price: "₹5800 (12% off)",
-    img: "assets/img6.avif",
+    img: "img6.avif",
     desc: "Spacious dresser table with mirror and drawer compartments."
   },
   {
     name: "Chair",
     price: "₹1800 (12% off)",
-    img: "assets/img7.jpg",
+    img: "img7.jpg",
     desc: "Comfortable and elegant accent chair perfect for any room."
   },
   {
