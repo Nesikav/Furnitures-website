@@ -2,31 +2,31 @@ const products = [
   {
     name: "Fabulous Kids Sofa",
     price: "₹1582 (10% off)",
-    img: "assets/img1.jpg",
+    img: "img1.jpg",
     desc: "Soft, safe, and colorful kids sofa perfect for playrooms and bedrooms."
   },
   {
     name: "Elegant Bookcase",
     price: "₹3431 (6% off)",
-    img: "assets/img2.avif",
+    img: "img2.avif",
     desc: "A sleek bookcase to organize and decorate your favorite reading corner."
   },
   {
     name: "Dining Table",
     price: "₹12500 (15% off)",
-    img: "assets/img3.jpg",
+    img: "img3.jpg",
     desc: "Sturdy and stylish dining table, ideal for family meals and gatherings."
   },
   {
     name: "Coffee Table",
     price: "₹3800 (12% off)",
-    img: "assets/img4.avif",
+    img: "img4.avif",
     desc: "Modern coffee table to complement your living room setup beautifully."
   },
   {
     name: "TV Stand",
     price: "₹4800 (12% off)",
-    img: "assets/img5.avif",
+    img: "img5.avif",
     desc: "Functional and elegant TV unit with ample storage space."
   },
   {
@@ -44,19 +44,19 @@ const products = [
   {
     name: "Bed",
     price: "₹8800 (12% off)",
-    img: "assets/img8.jpg",
+    img: "img8.jpg",
     desc: "Stylish bed with a sturdy frame for a good night's sleep."
   },
   {
     name: "Cushion Chair",
     price: "₹3800 (12% off)",
-    img: "assets/img9.avif",
+    img: "img9.avif",
     desc: "Luxurious cushioned chair for relaxing in your reading nook."
   },
   {
     name: "Foldable Cot",
     price: "₹13800 (12% off)",
-    img: "assets/img10.avif",
+    img: "img10.avif",
     desc: "Space-saving foldable cot ideal for guests and compact rooms."
   }
 ];
