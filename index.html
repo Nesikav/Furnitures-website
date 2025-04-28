@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Furnishings</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .close-button {
+      float: right;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal input {
+      width: 90%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    .modal button {
+      padding: 8px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      
+      <a href="contact.html">📞contact</a>
+      <a href="javascript:void(0);" class="signin-btn" onclick="openSignInModal()">Sign In</a>
+      <a href="javascript:void(0);" class="signup-btn" onclick="openSignUpModal()">Sign Up</a>
+      <a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a>
+
+    </div>
+    <div class="header-content">
+      <h1 class="shop-name">Home Furnishings</h1>
+      <p class="tagline">Elevate Your Living Space with Exquisite Furniture</p>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-box" placeholder="Search product...">
+      <button onclick="searchProduct()">Search</button>
+    </div>
+  </header>
+
+  <section class="product-container" id="product-container">
+    <!-- Product content -->
+  </section>
+
+  <section class="product-detail" id="product-detail" style="display: none;">
+  <button id="close-detail">← Back to Products</button>
+  <img id="detail-image" src="" alt="Product Image">
+  <h2 id="detail-name"></h2>
+  <p id="detail-price"></p>
+  <p id="detail-description"></p>
+  <button onclick="addToCart()">Add to Cart 🛒</button>
+  <button onclick="goToBuy()">Buy Now</button>
+ 
+</section>
+
+
+  <!-- Sign In Modal -->
+  <div id="signin-modal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeSignInModal()" class="close-button">&times;</span>
+      <h2>Sign In</h2>
+      <input type="text" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button>Submit</button>
+    </div>
+  </div>
+
+  <!-- Sign Up Modal -->
+  <div id="signup-modal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeSignUpModal()" class="close-button">&times;</span>
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
+      <button>Register</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-info">
+      <p>&copy; 2025 <span class="brand">Sakainfosys.com</span></p>
+      <p class="tagline">Beautiful furniture, delivered to your doorstep.</p>
+    </div>
+    <div class="contact">
+      <p>Contact us: <a href="mailto:nesikavadivel@gmail.com" class="email-link">nesikavadivel@gmail.com</a></p>
+    </div>
+    <div class="socials">
+      <p>Follow us on: 
+        <a href="#" class="social-link">Facebook</a> | 
+        <a href="#" class="social-link">Instagram</a> | 
+        <a href="#" class="social-link">Twitter</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    function openSignInModal() {
+      document.getElementById("signin-modal").style.display = "flex";
+    }
+
+    function closeSignInModal() {
+      document.getElementById("signin-modal").style.display = "none";
+    }
+
+    function openSignUpModal() {
+      document.getElementById("signup-modal").style.display = "flex";
+    }
+
+    function closeSignUpModal() {
+      document.getElementById("signup-modal").style.display = "none";
+    }
+
+    // Optional: Close modal when clicking outside the modal content
+    window.onclick = function(event) {
+      const signInModal = document.getElementById("signin-modal");
+      const signUpModal = document.getElementById("signup-modal");
+
+      if (event.target === signInModal) {
+        closeSignInModal();
+      }
+      if (event.target === signUpModal) {
+        closeSignUpModal();
+      }
+    }
+  </script>
+
+  
+  <!--<form id="checkout-form">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <input type="text" id="orderDetails" placeholder="Order Details" required>
+    <button type="submit">Checkout</button>
+  </form>-->
+ 
+ 
+
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script src="script.js"></script
+
+
+</body>
+</html>
