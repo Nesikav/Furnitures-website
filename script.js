@@ -203,7 +203,7 @@ document.getElementById("checkout-form").addEventListener("submit", function(e) 
     orderDetails: document.getElementById("orderDetails").value
   };
  
-  fetch("http://localhost:3000/send-email", {
+  fetch("https://gmailautomation-2vh2.onrender.com/send-email", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
