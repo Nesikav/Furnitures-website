@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      animation: backgroundFade 2s ease-in;
+    }
+
+    @keyframes backgroundFade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      animation: formSlide 1.5s ease;
+    }
+
+    @keyframes formSlide {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #ff7e5f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #eb5e28;
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      color: #ff7e5f;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="particles"></canvas>
+
+  <div class="form-container">
+    <h2>Sign In</h2>
+    <form id="signinForm">
+      <input type="email" id="signinEmail" placeholder="Email" required><br>
+      <input type="password" id="signinPassword" placeholder="Password" required><br>
+      <button type="submit">Sign In</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    // Login logic
+    document.getElementById("signinForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const enteredEmail = document.getElementById("signinEmail").value;
+      const enteredPassword = document.getElementById("signinPassword").value;
+
+      const savedEmail = localStorage.getItem("userEmail");
+      const savedPassword = localStorage.getItem("userPassword");
+
+      if (enteredEmail === savedEmail && enteredPassword === savedPassword) {
+        alert("Login successful!");
+        window.location.href = "index.html";
+      } else {
+        alert("Wrong email or password.");
+      }
+    });
+
+    // Particle background
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        dx: Math.random() * 1 - 0.5,
+        dy: Math.random() * 1 - 0.5,
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+
+        // Wrap particles
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+      }
+      requestAnimationFrame(animateParticles);
+    }
+
+    animateParticles();
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>

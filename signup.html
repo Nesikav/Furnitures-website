@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <style>
+    /* Full page background */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      position: relative;
+    }
+
+    /* Particles container */
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Form container */
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: formSlide 1.5s ease;
+    }
+
+    @keyframes formSlide {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(-50%); opacity: 1; }
+    }
+
+    input[type="email"], input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    a:hover {
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles background -->
+  <div id="particles-js"></div>
+
+  <div class="form-container">
+    <h2>Sign Up</h2>
+    <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="Email" required><br>
+
+      <input type="password" id="signupPassword" placeholder="Password" required><br>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="signin.html">Sign In</a></p>
+  </div>
+
+  <!-- SignUp Logic -->
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userPassword", password);
+
+      alert("Signup successful. Now please sign in.");
+      window.location.href = "signin.html";
+    });
+  </script>
+
+  <!-- Include particles.js library -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <!-- Configure particles -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80
+        },
+        "size": {
+          "value": 3
+        },
+        "move": {
+          "speed": 2
+        },
+        "line_linked": {
+          "enable": true
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
