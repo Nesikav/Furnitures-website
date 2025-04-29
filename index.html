@@ -2,117 +2,155 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home Furnishings</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Sign In & Sign Up</title>
   <style>
-    /* Modal Styles */
-    .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #83a4d4, #b6fbff);
+      position: relative;
     }
 
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       text-align: center;
       width: 300px;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: formSlide 1.5s ease;
     }
 
-    .close-button {
-      float: right;
-      font-size: 20px;
-      cursor: pointer;
+    @keyframes formSlide {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(-50%); opacity: 1; }
     }
 
-    .modal input {
+    input[type="email"], input[type="password"] {
       width: 90%;
+      padding: 10px;
       margin: 10px 0;
-      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
 
-    .modal button {
-      padding: 8px 20px;
+    button {
+      width: 95%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
       cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.05);
+    }
+
+    .toggle-link {
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+
+    .toggle-link:hover {
+      color: #4CAF50;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      
-      <a href="contact.html">📞contact</a>
-  
-      <a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a>
 
-    </div>
-    <div class="header-content">
-      <h1 class="shop-name">Home Furnishings</h1>
-      <p class="tagline">Elevate Your Living Space with Exquisite Furniture</p>
-    </div>
-    <div class="search-bar">
-      <input type="text" id="search-box" placeholder="Search product...">
-      <button onclick="searchProduct()">Search</button>
-    </div>
-  </header>
+  <div id="particles-js"></div>
 
-  <section class="product-container" id="product-container">
-    <!-- Product content -->
-  </section>
+  <div class="form-container">
+    <h2 id="formTitle">Sign In</h2>
 
-  <section class="product-detail" id="product-detail" style="display: none;">
-  <button id="close-detail">← Back to Products</button>
-  <img id="detail-image" src="" alt="Product Image">
-  <h2 id="detail-name"></h2>
-  <p id="detail-price"></p>
-  <p id="detail-description"></p>
-  <button onclick="addToCart()">Add to Cart 🛒</button>
-  <button onclick="goToBuy()">Buy Now</button>
- 
-</section>
+    <form id="authForm">
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit" id="submitButton">Sign In</button>
+    </form>
 
+    <p class="toggle-link" id="toggleLink">Don't have an account? Sign Up</p>
+  </div>
 
-  
-  <footer class="footer">
-    <div class="footer-info">
-      <p>&copy; 2025 <span class="brand">Sakainfosys.com</span></p>
-      <p class="tagline">Beautiful furniture, delivered to your doorstep.</p>
-    </div>
-    <div class="contact">
-      <p>Contact us: <a href="mailto:nesikavadivel@gmail.com" class="email-link">nesikavadivel@gmail.com</a></p>
-    </div>
-    <div class="socials">
-      <p>Follow us on: 
-        <a href="#" class="social-link">Facebook</a> | 
-        <a href="#" class="social-link">Instagram</a> | 
-        <a href="#" class="social-link">Twitter</a>
-      </p>
-    </div>
-  </footer>
+  <!-- Logic -->
+  <script>
+    let isSignIn = true;
 
-  
-  
-  <!--<form id="checkout-form">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <input type="text" id="orderDetails" placeholder="Order Details" required>
-    <button type="submit">Checkout</button>
-  </form>-->
- 
- 
+    document.getElementById("toggleLink").addEventListener("click", function() {
+      isSignIn = !isSignIn;
+      if (isSignIn) {
+        document.getElementById("formTitle").innerText = "Sign In";
+        document.getElementById("submitButton").innerText = "Sign In";
+        document.getElementById("toggleLink").innerText = "Don't have an account? Sign Up";
+      } else {
+        document.getElementById("formTitle").innerText = "Sign Up";
+        document.getElementById("submitButton").innerText = "Sign Up";
+        document.getElementById("toggleLink").innerText = "Already have an account? Sign In";
+      }
+    });
 
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="script.js"></script
+    document.getElementById("authForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
+      if (isSignIn) {
+        const storedEmail = localStorage.getItem("userEmail");
+        const storedPassword = localStorage.getItem("userPassword");
+
+        if (email === storedEmail && password === storedPassword) {
+          alert("Sign In successful!");
+          window.location.href = "product.html";
+        } else {
+          alert("Invalid credentials. Please try again.");
+        }
+      } else {
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userPassword", password);
+        alert("Sign Up successful! Redirecting...");
+        window.location.href = "product.html";
+      }
+    });
+  </script>
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 80 },
+        "size": { "value": 3 },
+        "move": { "speed": 2 },
+        "line_linked": { "enable": true }
+      }
+    });
+  </script>
 
 </body>
 </html>
