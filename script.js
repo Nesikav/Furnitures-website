@@ -194,7 +194,7 @@ window.onclick = function(event) {
     orderDetails: document.getElementById("orderDetails").value
   };
 
-  fetch("https://gmailautomation-2vh2.onrender.com/send-email", {
+  fetch("https://backend-1-msp7.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
