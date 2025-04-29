@@ -185,26 +185,48 @@ window.onclick = function(event) {
 };
 
 // Checkout form
-document.getElementById("checkout-form")?.addEventListener("submit", function(e) {
-  e.preventDefault();
+document.getElementById("checkout-form").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-  const data = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    orderDetails: document.getElementById("orderDetails").value
-  };
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const address = document.getElementById("address").value;
 
-  fetch("https://backend-1-msp7.onrender.com", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(response => {
-    if (response.ok) {
-      alert("✅ Email sent successfully!");
-    } else {
-      alert("❌ Failed to send email.");
-    }
-  });
-});
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let orderDetails = `Phone: ${phone}\nAddress: ${address}\n\n`;
+      let total = 0;
 
+      cart.forEach(item => {
+        const price = Number(item.price);
+        orderDetails += `Product: ${item.name}\nPrice: ₹${price}\nDescription: ${item.description}\n\n`;
+        total += price;
+      });
+
+      orderDetails += `Total Price: ₹${total.toFixed(2)}`;
+
+      fetch("https://backend-1-msp7.onrender.com/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          orderDetails: orderDetails
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("✅ Thank you for your purchase! Email sent.");
+          localStorage.removeItem("cart");
+          window.location.href = "product.html";
+        } else {
+          alert("❌ Failed to send email.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("❌ Something went wrong. Please try again.");
+      });
+    });
