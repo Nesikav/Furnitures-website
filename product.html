@@ -5,7 +5,6 @@
   <title>Home Furnishings</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Modal Styles */
     .modal {
       position: fixed;
       top: 0; left: 0;
@@ -48,11 +47,8 @@
     <div class="nav-links">
       <a href="product.html">Home</a>
       <a href="about.html">About Us</a>
-      
       <a href="contact.html">📞contact</a>
-  
       <a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a>
-
     </div>
     <div class="header-content">
       <h1 class="shop-name">Home Furnishings</h1>
@@ -69,18 +65,20 @@
   </section>
 
   <section class="product-detail" id="product-detail" style="display: none;">
-  <button id="close-detail">← Back to Products</button>
-  <img id="detail-image" src="" alt="Product Image">
-  <h2 id="detail-name"></h2>
-  <p id="detail-price"></p>
-  <p id="detail-description"></p>
-  <button onclick="addToCart()">Add to Cart 🛒</button>
-  <button onclick="goToBuy()">Buy Now</button>
- 
-</section>
+    <button id="close-detail">← Back to Products</button>
+    <div class="image-slider">
+      <button class="nav-btn" id="prev-image">←</button>
+      <img id="detail-image" src="" alt="Product Image">
+      <button class="nav-btn" id="next-image">→</button>
+    </div>
 
+    <h2 id="detail-name"></h2>
+    <p id="detail-price"></p>
+    <p id="detail-description"></p>
+    <button onclick="addToCart()">Add to Cart 🛒</button>
+    <button onclick="goToBuy()">Buy Now</button>
+  </section>
 
-  
   <footer class="footer">
     <div class="footer-info">
       <p>&copy; 2025 <span class="brand">Sakainfosys.com</span></p>
@@ -98,21 +96,35 @@
     </div>
   </footer>
 
-  
-  
-  <form id="checkout-form">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <input type="text" id="orderDetails" placeholder="Order Details" required>
-    <button type="submit">Checkout</button>
-  </form>
- 
- 
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    function goToBuy() {
+      const name = document.getElementById("detail-name").textContent;
+      const priceText = document.getElementById("detail-price").textContent;
+      const description = document.getElementById("detail-description").textContent;
 
-<!-- EmailJS SDK -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="script.js"></script
+      const price = priceText.replace("₹", "").trim(); // Extract just the number
 
+      const cart = [{
+        name: name,
+        price: price,
+        description: description
+      }];
 
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "buy.html";
+    }
+
+    function addToCart() {
+      alert("Product added to cart! (You can implement full cart logic here.)");
+    }
+
+    function searchProduct() {
+      const input = document.getElementById("search-box").value;
+      alert("Search functionality coming soon! You searched for: " + input);
+    }
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
