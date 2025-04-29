@@ -50,8 +50,7 @@
       <a href="about.html">About Us</a>
       
       <a href="contact.html">📞contact</a>
-      <a href="javascript:void(0);" class="signin-btn" onclick="openSignInModal()">Sign In</a>
-      <a href="javascript:void(0);" class="signup-btn" onclick="openSignUpModal()">Sign Up</a>
+  
       <a href="cart.html">Cart 🛒 (<span id="cart-count">0</span>)</a>
 
     </div>
@@ -81,29 +80,7 @@
 </section>
 
 
-  <!-- Sign In Modal -->
-  <div id="signin-modal" class="modal">
-    <div class="modal-content">
-      <span onclick="closeSignInModal()" class="close-button">&times;</span>
-      <h2>Sign In</h2>
-      <input type="text" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <button>Submit</button>
-    </div>
-  </div>
-
-  <!-- Sign Up Modal -->
-  <div id="signup-modal" class="modal">
-    <div class="modal-content">
-      <span onclick="closeSignUpModal()" class="close-button">&times;</span>
-      <h2>Sign Up</h2>
-      <input type="text" placeholder="Name">
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Password">
-      <button>Register</button>
-    </div>
-  </div>
-
+  
   <footer class="footer">
     <div class="footer-info">
       <p>&copy; 2025 <span class="brand">Sakainfosys.com</span></p>
@@ -121,37 +98,7 @@
     </div>
   </footer>
 
-  <script>
-    function openSignInModal() {
-      document.getElementById("signin-modal").style.display = "flex";
-    }
-
-    function closeSignInModal() {
-      document.getElementById("signin-modal").style.display = "none";
-    }
-
-    function openSignUpModal() {
-      document.getElementById("signup-modal").style.display = "flex";
-    }
-
-    function closeSignUpModal() {
-      document.getElementById("signup-modal").style.display = "none";
-    }
-
-    // Optional: Close modal when clicking outside the modal content
-    window.onclick = function(event) {
-      const signInModal = document.getElementById("signin-modal");
-      const signUpModal = document.getElementById("signup-modal");
-
-      if (event.target === signInModal) {
-        closeSignInModal();
-      }
-      if (event.target === signUpModal) {
-        closeSignUpModal();
-      }
-    }
-  </script>
-
+  
   
   <!--<form id="checkout-form">
     <input type="text" id="name" placeholder="Your Name" required>
