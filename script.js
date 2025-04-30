@@ -2,64 +2,65 @@ const products = [
   {
     name: "Fabulous Kids Sofa",
     price: "₹1582 (10% off)",
-    images: ["img1.jpg", "img11.avif", "img12.avif"],
+    images: ["img1.jpg", "img11.avif", "img12.avif","img13.avif"],
     desc: "Soft, safe, and colorful kids sofa perfect for playrooms and bedrooms."
   },
   {
     name: "Elegant Bookcase",
     price: "₹3431 (6% off)",
-    images: ["img2.avif"],
+    images: ["img2.avif", "img14.webp", "img15.webp","img16.webp"],
     desc: "A sleek bookcase to organize and decorate your favorite reading corner."
   },
   {
     name: "Dining Table",
     price: "₹12500 (15% off)",
-    images: ["img3.jpg"],
+    images: ["img3.jpg","img17.webp", "img18.avif","img19.avif"],
     desc: "Sturdy and stylish dining table, ideal for family meals and gatherings."
   },
   {
     name: "Coffee Table",
     price: "₹3800 (12% off)",
-    images: ["img4.avif"],
+    images: ["img4.avif","img20.avif", "img21.avif","img22.avif"],
     desc: "Modern coffee table to complement your living room setup beautifully."
   },
   {
     name: "TV Stand",
     price: "₹4800 (12% off)",
-    images: ["img5.avif"],
+    images: ["img5.avif","img23.avif", "img24.avif","img25.avif"],
     desc: "Functional and elegant TV unit with ample storage space."
   },
   {
     name: "Dresser Table",
     price: "₹5800 (12% off)",
-    images: ["img6.avif"],
+    images: ["img6.avif","img27.avif", "img28.avif","img29.avif"],
     desc: "Spacious dresser table with mirror and drawer compartments."
   },
   {
     name: "Chair",
     price: "₹1800 (12% off)",
-    images: ["img7.jpg"],
+    images: ["img7.jpg","img30.avif", "img31.avif","img32.avif"],
     desc: "Comfortable and elegant accent chair perfect for any room."
   },
   {
     name: "Bed",
     price: "₹8800 (12% off)",
-    images: ["img8.jpg"],
+    images: ["img8.jpg","img33.avif", "img34.avif","img35.avif"],
     desc: "Stylish bed with a sturdy frame for a good night's sleep."
   },
   {
     name: "Cushion Chair",
     price: "₹3800 (12% off)",
-    images: ["img9.avif"],
+    images: ["img9.avif","img36.avif", "img37.avif","img38.avif"],
     desc: "Luxurious cushioned chair for relaxing in your reading nook."
   },
   {
     name: "Foldable Cot",
     price: "₹13800 (12% off)",
-    images: ["img10.avif"],
+    images: ["img10.avif","img39.avif", "img40.avif","img41.avif"],
     desc: "Space-saving foldable cot ideal for guests and compact rooms."
   }
 ];
+
 
 // DOM references
 const productContainer = document.getElementById("product-container");
