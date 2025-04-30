@@ -40,6 +40,30 @@
       padding: 8px 20px;
       cursor: pointer;
     }
+
+    .image-slider {
+      text-align: center;
+    }
+
+    .image-slider img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .arrow-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .arrow-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -67,9 +91,11 @@
   <section class="product-detail" id="product-detail" style="display: none;">
     <button id="close-detail">← Back to Products</button>
     <div class="image-slider">
-      <button class="nav-btn" id="prev-image">←</button>
       <img id="detail-image" src="" alt="Product Image">
-      <button class="nav-btn" id="next-image">→</button>
+      <div class="arrow-container">
+        <button class="arrow-button" id="prev-image">&#8592;</button>
+        <button class="arrow-button" id="next-image">&#8594;</button>
+      </div>
     </div>
 
     <h2 id="detail-name"></h2>
