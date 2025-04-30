@@ -126,15 +126,18 @@ document.getElementById("close-detail").addEventListener("click", () => {
   }, 500);
 });
 
-// Search product
 function searchProduct() {
-  const searchText = document.getElementById("search-box").value.toLowerCase();
+  const searchText = document.getElementById("search-box").value.toLowerCase().trim();
+
   const filtered = products.filter(product =>
     product.name.toLowerCase().includes(searchText)
   );
-  productContainer.innerHTML = filtered.length === 0
-    ? "<p>No matching products found.</p>"
-    : displayProducts(filtered);
+
+  if (filtered.length === 0) {
+    productContainer.innerHTML = "<p>No matching products found.</p>";
+  } else {
+    displayProducts(filtered); // This should be a function to display filtered items
+  }
 }
 
 // Add to cart
