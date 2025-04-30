@@ -1,4 +1,3 @@
-<!-- buy.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,6 +52,46 @@
     .back-button button {
       background-color: #444;
     }
+
+    /* ✅ Popup Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    .popup-content h2 {
+      color: green;
+      margin-bottom: 15px;
+    }
+
+    .popup-content p {
+      margin-bottom: 20px;
+    }
+
+    .popup-content button {
+      background-color: #28a745;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -79,6 +118,17 @@
     <a href="product.html">
       <button>← Back to Home</button>
     </a>
+  </div>
+
+  <!-- ✅ Confirmation Popup -->
+  <div class="popup" id="success-popup">
+    <div class="popup-content">
+      <h2>🎉 Purchase Confirmed!</h2>
+      <p>Thank you for your order.<br>A confirmation email has been sent to you.</p>
+      <a href="product.html">
+        <button>Continue Shopping</button>
+      </a>
+    </div>
   </div>
 
   <script>
@@ -115,9 +165,9 @@
       })
       .then(response => {
         if (response.ok) {
-          alert("✅ Thank you for your purchase! Email sent.");
+          // ✅ Show popup
+          document.getElementById("success-popup").style.display = "flex";
           localStorage.removeItem("cart");
-          window.location.href = "product.html";
         } else {
           alert("❌ Failed to send email.");
         }
